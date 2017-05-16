@@ -2,18 +2,29 @@ import java.util.Scanner;
 
 public class SimpleEncodeDecode {
 	
-	public static String publicKey = "open"; 
+	private static String publicKey = "open"; 
 	private static String privateKey = "letmesee";
 	
 	
-	public static void main (String args[]) {
-		String message;
-		System.out.print("Enter your message: ");
-		Scanner reader = new Scanner(System.in); //user enters a message they want to encode/decode
-		message = reader.nextLine(); 
+	public static void main (String args[]) 
+	{
+		String message, answer;
 		
-		encode(message); //method to encode the message
-
+		do
+		{
+			Scanner reader = new Scanner(System.in); //user enters a message they want to encode/decode
+			System.out.print("Enter your message: ");
+			message = reader.nextLine(); 	
+			
+			encode(message);//method to encode the message
+			
+			Scanner reader2 = new Scanner(System.in);
+			System.out.print("Would you like to continue? Type yes to continue, or anything else to exit: ");
+			answer = reader2.nextLine();
+			answer.toLowerCase();
+			if (!(answer.equals("yes"))) System.exit(0);
+		}
+			while ((answer.equals("yes"))); //continue to run encode/decode as long as user wants
 	}
 	
 	public static void encode(String message){
@@ -67,5 +78,6 @@ public class SimpleEncodeDecode {
 				System.out.print(decodedMsg[i]); //prints decoded message
 			}
 		}
+		System.out.println();
 	}
 } //end class
